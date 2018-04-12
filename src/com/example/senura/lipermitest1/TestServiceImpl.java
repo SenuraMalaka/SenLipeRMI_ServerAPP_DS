@@ -6,15 +6,28 @@
 package com.example.senura.lipermitest1;
 
 
+
 /**
  *
  * @author senura
  */
 public class TestServiceImpl implements TestService{
 
+    private String URL ="https://httpbin.org/user-agent";
+            
     @Override
     public String getResponse(String data) {
         return data+" hey babe.. from Mac :)";
+    }
+
+    @Override
+    public boolean isHavingHostURL() {
+        if(URL.equals("")) return false; return true;
+    }
+
+    @Override
+    public String getURL() {
+        return URL;
     }
     
     
