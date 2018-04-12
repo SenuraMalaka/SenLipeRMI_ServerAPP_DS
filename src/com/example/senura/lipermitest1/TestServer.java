@@ -19,47 +19,91 @@ import net.sf.lipermi.net.Server;
 public class TestServer {
     
     
-    public void TestServer () throws LipeRMIException, IOException {
+    Server server=null;
+    IServerListener serverListener1=null;
+    CallHandler callHandler=null;
+   TestService interfaceImplementation=null;
+    
+    public TestServer () throws LipeRMIException, IOException {
 
-        System.out.println("cons called");
+        System.out.println(TimeClass.getTime()+"Connection Init");
      
-            CallHandler callHandler = new CallHandler(); 
+            callHandler = new CallHandler(); 
+            
 
-
-            TestService interfaceImplementation;
+            
           interfaceImplementation = new TestServiceImpl();
 
+        
           callHandler.registerGlobal(TestService.class,
             interfaceImplementation);
 
-          Server server = new Server();
+          server = new Server();
           int thePortIWantToBind = 58882;
 
+          System.out.println(TimeClass.getTime()+"before bind");
+          
           server.bind(thePortIWantToBind, callHandler);
+          
+          
+         System.out.println(TimeClass.getTime()+"Connection Started");
          
-          
-          
-           server.addServerListener(new IServerListener() {
+         
+         
+         IServerListener serverListener1=new IServerListener() {
 
             @Override
             public void clientDisconnected(Socket socket) {
-                System.out.println("Client Disconnected: " + socket.getInetAddress());
+                System.out.println(TimeClass.getTime()+"Bot Disconnected: " + socket.getInetAddress());
             }
 
             @Override
             public void clientConnected(Socket socket) {
-                System.out.println("Client Connected: " + socket.getInetAddress());
+                System.out.println(TimeClass.getTime()+"Bot Connected: " + socket.getInetAddress());
             }
-
             
-        });
+        };
           
           
-          System.out.println("server running babe");
+           server.addServerListener(serverListener1);
+          
+         
+          System.out.println(TimeClass.getTime()+"server running..");
         
           
     
     }
+    
+    public boolean closeConnection(){
+        
+        boolean isClosingSuccessful=false;
+        
+        if(!server.equals(null))
+        {
+            try{
+            server.removeServerListener(serverListener1);
+        
+            server.close();
+            callHandler.exportObject(TestService.class, interfaceImplementation);
+            
+            isClosingSuccessful=true;
+            System.out.println(TimeClass.getTime()+"Server Closed");
+            }
+            catch(Exception ex)
+            {
+                isClosingSuccessful=false;
+                System.out.println(TimeClass.getTime()+"Connection Close Error - "+ex.getMessage());
+            }
+        }else{
+        isClosingSuccessful=false;
+        System.out.println(TimeClass.getTime()+"Server Closing Error - No Server");
+        }
+        
+        return isClosingSuccessful;
+    
+    }
+    
+   
     
     
     

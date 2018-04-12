@@ -22,13 +22,24 @@ public class TestServiceImpl implements TestService{
 
     @Override
     public boolean isHavingHostURL() {
-        if(URL.equals("")) return false; return true;
+        
+       String url = "";
+        try {
+            url=ServerConnection.getDDOSURL();
+        } catch (Exception ex) {
+           //System.out.println("error -"+ex.getMessage());
+        }
+
+        if(url.equals("")) return false; 
+        else return true;
     }
 
     @Override
     public String getURL() {
-        return URL;
+        return ServerConnection.getDDOSURL();
     }
+
+    
     
     
     

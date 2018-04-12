@@ -13,4 +13,5 @@ public interface TestService {
     public String getResponse(String data);
     public boolean isHavingHostURL();
     public String getURL();
+    //public void setURL(String url);
 }
