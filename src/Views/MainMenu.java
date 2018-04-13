@@ -6,6 +6,7 @@
 package Views;
 
 import com.example.senura.lipermitest1.ServerConnection;
+import com.example.senura.lipermitest1.URLValidate;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -40,6 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         buttonSendDDOS = new javax.swing.JButton();
         buttonStartConnection = new javax.swing.JButton();
+        jTextField_HostAddress = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(612, 672));
@@ -66,6 +68,15 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(buttonStartConnection);
         buttonStartConnection.setBounds(190, 80, 210, 70);
 
+        jTextField_HostAddress.setToolTipText("Type the Host Url here");
+        jTextField_HostAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_HostAddressActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField_HostAddress);
+        jTextField_HostAddress.setBounds(130, 210, 360, 40);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -75,7 +86,13 @@ public class MainMenu extends javax.swing.JFrame {
 //            buttonSendDDOS.setEnabled(false);
 //        }
 
-     ServerConnection.setDDOSURL("https://httpbin.org/ip");
+     String URLtext=jTextField_HostAddress.getText();
+     
+     if(URLValidate.isUrlValid(URLtext))
+     ServerConnection.setDDOSURL(URLtext);//("https://httpbin.org/ip");
+     else{
+         msgbox(URLtext+" is not a valid Host Address\n Make sure protocols are there (https/http etc.)");
+     }
 
 
 
@@ -91,6 +108,22 @@ public class MainMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonStartConnectionActionPerformed
 
+    private void jTextField_HostAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_HostAddressActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_HostAddressActionPerformed
+
+    
+    
+    
+    
+    private void msgbox(String s){
+   javax.swing.JOptionPane.showMessageDialog(null, s);
+        }
+    
+    
+    
+    
+    
     
     
     
@@ -157,5 +190,6 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
+    private javax.swing.JTextField jTextField_HostAddress;
     // End of variables declaration//GEN-END:variables
 }
