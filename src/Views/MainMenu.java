@@ -42,6 +42,8 @@ public class MainMenu extends javax.swing.JFrame {
         buttonSendDDOS = new javax.swing.JButton();
         buttonStartConnection = new javax.swing.JButton();
         jTextField_HostAddress = new javax.swing.JTextField();
+        jScrollPane_Status = new javax.swing.JScrollPane();
+        jTextAreaStatus = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(612, 672));
@@ -75,7 +77,14 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField_HostAddress);
-        jTextField_HostAddress.setBounds(130, 210, 360, 40);
+        jTextField_HostAddress.setBounds(120, 200, 360, 40);
+
+        jTextAreaStatus.setColumns(20);
+        jTextAreaStatus.setRows(5);
+        jScrollPane_Status.setViewportView(jTextAreaStatus);
+
+        getContentPane().add(jScrollPane_Status);
+        jScrollPane_Status.setBounds(40, 430, 550, 240);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,6 +132,11 @@ public class MainMenu extends javax.swing.JFrame {
     
     
     
+    
+    public static void appendToStatusText(String status){
+    
+        jTextAreaStatus.append(status);
+    }
     
     
     
@@ -190,6 +204,8 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
+    private javax.swing.JScrollPane jScrollPane_Status;
+    private static javax.swing.JTextArea jTextAreaStatus;
     private javax.swing.JTextField jTextField_HostAddress;
     // End of variables declaration//GEN-END:variables
 }

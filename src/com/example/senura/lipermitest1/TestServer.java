@@ -5,6 +5,7 @@
  */
 package com.example.senura.lipermitest1;
 
+import static Views.MainMenuUIController.setTextStatus;
 import java.io.IOException;
 import java.net.Socket;
 import net.sf.lipermi.exception.LipeRMIException;
@@ -26,7 +27,7 @@ public class TestServer {
     
     public TestServer () throws LipeRMIException, IOException {
 
-        System.out.println(TimeClass.getTime()+"Connection Init");
+        setTextStatus(TimeClass.getTime()+"Connection Init");
      
             callHandler = new CallHandler(); 
             
@@ -41,12 +42,12 @@ public class TestServer {
           server = new Server();
           int thePortIWantToBind = 58882;
 
-          System.out.println(TimeClass.getTime()+"before bind");
+          setTextStatus(TimeClass.getTime()+"before bind");
           
           server.bind(thePortIWantToBind, callHandler);
           
           
-         System.out.println(TimeClass.getTime()+"Connection Started");
+         setTextStatus(TimeClass.getTime()+"Connection Started");
          
          
          
@@ -54,12 +55,12 @@ public class TestServer {
 
             @Override
             public void clientDisconnected(Socket socket) {
-                System.out.println(TimeClass.getTime()+"Bot Disconnected: " + socket.getInetAddress());
+                setTextStatus(TimeClass.getTime()+"Bot Disconnected: " + socket.getInetAddress());
             }
 
             @Override
             public void clientConnected(Socket socket) {
-                System.out.println(TimeClass.getTime()+"Bot Connected: " + socket.getInetAddress());
+                setTextStatus(TimeClass.getTime()+"Bot Connected: " + socket.getInetAddress());
             }
             
         };
@@ -68,7 +69,7 @@ public class TestServer {
            server.addServerListener(serverListener1);
           
          
-          System.out.println(TimeClass.getTime()+"server running..");
+          setTextStatus(TimeClass.getTime()+"server running..");
         
           
     
@@ -87,16 +88,16 @@ public class TestServer {
             callHandler.exportObject(TestService.class, interfaceImplementation);
             
             isClosingSuccessful=true;
-            System.out.println(TimeClass.getTime()+"Server Closed");
+            setTextStatus(TimeClass.getTime()+"Server Closed");
             }
             catch(Exception ex)
             {
                 isClosingSuccessful=false;
-                System.out.println(TimeClass.getTime()+"Connection Close Error - "+ex.getMessage());
+                setTextStatus(TimeClass.getTime()+"Connection Close Error - "+ex.getMessage());
             }
         }else{
         isClosingSuccessful=false;
-        System.out.println(TimeClass.getTime()+"Server Closing Error - No Server");
+        setTextStatus(TimeClass.getTime()+"Server Closing Error - No Server");
         }
         
         return isClosingSuccessful;
