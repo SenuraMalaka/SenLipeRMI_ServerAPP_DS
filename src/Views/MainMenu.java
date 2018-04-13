@@ -70,6 +70,7 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(buttonStartConnection);
         buttonStartConnection.setBounds(190, 80, 210, 70);
 
+        jTextField_HostAddress.setText("https://httpbin.org/user-agent");
         jTextField_HostAddress.setToolTipText("Type the Host Url here");
         jTextField_HostAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
