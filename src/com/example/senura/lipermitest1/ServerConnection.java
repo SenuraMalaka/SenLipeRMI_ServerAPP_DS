@@ -5,6 +5,7 @@
  */
 package com.example.senura.lipermitest1;
 
+import Views.MainMenuUIController;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +32,7 @@ public class ServerConnection {
             return true;
         } catch (LipeRMIException | IOException ex) {
             Logger.getLogger(ServerConnection.class.getName()).log(Level.SEVERE, null, ex);
+            MainMenuUIController.setTextStatus(TimeClass.getTime()+" Error:"+ex.getMessage());
             return false;
         }
      

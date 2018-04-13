@@ -112,7 +112,11 @@ public class MainMenu extends javax.swing.JFrame {
 
             boolean isServerStarted = ServerConnection.start();
             
-            if(isServerStarted)  buttonSendDDOS.setEnabled(true);
+            if(isServerStarted)  {
+                buttonSendDDOS.setEnabled(true);
+                buttonStartConnection.setEnabled(false);
+            }
+            else msgbox("Could not start the connection");
            
         
     }//GEN-LAST:event_buttonStartConnectionActionPerformed
