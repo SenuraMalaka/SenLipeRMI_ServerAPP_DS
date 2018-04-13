@@ -73,7 +73,7 @@ public class TestServer {
            server.addServerListener(serverListener1);
           
          
-          setTextStatus(TimeClass.getTime()+"server running..");
+          setTextStatus(TimeClass.getTime()+"Main Server running..");
         
           
     
@@ -87,22 +87,30 @@ public class TestServer {
     
     private static String previousControllerStatus="";
     private final static String conToConServer="Connected to control server";
-    private final static String conServerNotRes="Controller Server is not responding";
+    private final static String conServerNotRes="Control Server is not responding";
     
     
       private static void setConnectToConServerTimer(){
-          previousControllerStatus=conToConServer;
+          previousControllerStatus="null";
           Timer timer = new Timer();
           TimerTask myTask = new TimerTask() {
               @Override
               public void run() {
                   
-                if(!ClientControllerCon.start() && previousControllerStatus.equals(conToConServer)){
+                  boolean isConConnected=ClientControllerCon.start();
+                  
+                if(!isConConnected && previousControllerStatus.equals(conToConServer)){
                  MainMenuUIController.setTextStatus(TimeClass.getTime()+conServerNotRes);
                  previousControllerStatus=conServerNotRes;
-                }else if(previousControllerStatus.equals(conServerNotRes)){
+                }else if(isConConnected && previousControllerStatus.equals(conServerNotRes)){
                     MainMenuUIController.setTextStatus(TimeClass.getTime()+conToConServer);
                     previousControllerStatus=conToConServer;
+                }else if(isConConnected && previousControllerStatus.equals("null")){//first time execution
+                    MainMenuUIController.setTextStatus(TimeClass.getTime()+conToConServer);
+                    previousControllerStatus=conToConServer;
+                }else if(!isConConnected && previousControllerStatus.equals("null")){//first time execution
+                    MainMenuUIController.setTextStatus(TimeClass.getTime()+conServerNotRes);
+                    previousControllerStatus=conServerNotRes;
                 }
               
               }
