@@ -44,6 +44,8 @@ public class MainMenu extends javax.swing.JFrame {
         jTextField_HostAddress = new javax.swing.JTextField();
         jScrollPane_Status = new javax.swing.JScrollPane();
         jTextAreaStatus = new javax.swing.JTextArea();
+        jScrollPane_ClientStatus = new javax.swing.JScrollPane();
+        jTextArea_ClientStatus = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(612, 672));
@@ -59,7 +61,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonSendDDOS);
-        buttonSendDDOS.setBounds(150, 290, 290, 90);
+        buttonSendDDOS.setBounds(270, 30, 270, 70);
 
         buttonStartConnection.setText("Start Connection");
         buttonStartConnection.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +70,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonStartConnection);
-        buttonStartConnection.setBounds(190, 80, 210, 70);
+        buttonStartConnection.setBounds(50, 30, 210, 70);
 
         jTextField_HostAddress.setText("https://httpbin.org/user-agent");
         jTextField_HostAddress.setToolTipText("Type the Host Url here");
@@ -78,14 +80,21 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField_HostAddress);
-        jTextField_HostAddress.setBounds(120, 200, 360, 40);
+        jTextField_HostAddress.setBounds(50, 130, 480, 40);
 
         jTextAreaStatus.setColumns(20);
         jTextAreaStatus.setRows(5);
         jScrollPane_Status.setViewportView(jTextAreaStatus);
 
         getContentPane().add(jScrollPane_Status);
-        jScrollPane_Status.setBounds(40, 430, 550, 240);
+        jScrollPane_Status.setBounds(20, 200, 570, 160);
+
+        jTextArea_ClientStatus.setColumns(20);
+        jTextArea_ClientStatus.setRows(5);
+        jScrollPane_ClientStatus.setViewportView(jTextArea_ClientStatus);
+
+        getContentPane().add(jScrollPane_ClientStatus);
+        jScrollPane_ClientStatus.setBounds(20, 410, 570, 210);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,8 +218,10 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
+    private javax.swing.JScrollPane jScrollPane_ClientStatus;
     private javax.swing.JScrollPane jScrollPane_Status;
     private static javax.swing.JTextArea jTextAreaStatus;
+    private javax.swing.JTextArea jTextArea_ClientStatus;
     private javax.swing.JTextField jTextField_HostAddress;
     // End of variables declaration//GEN-END:variables
 }
