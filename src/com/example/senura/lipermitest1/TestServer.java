@@ -60,6 +60,7 @@ public class TestServer {
 
             @Override
             public void clientConnected(Socket socket) {
+                connectToControllerServer();
                 setTextStatus(TimeClass.getTime()+"Bot Connected: " + socket.getInetAddress());
             }
             
@@ -74,6 +75,13 @@ public class TestServer {
           
     
     }
+    
+    
+    private static void connectToControllerServer(){
+    ClientControllerCon.start();
+    }
+    
+    
     
     public boolean closeConnection(){
         

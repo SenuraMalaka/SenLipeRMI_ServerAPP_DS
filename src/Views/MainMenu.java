@@ -152,6 +152,10 @@ public class MainMenu extends javax.swing.JFrame {
         jTextAreaStatus.append(status);
     }
     
+    public static void showClientStatus(String status){
+        jTextArea_ClientStatus.setText(status);
+    }
+    
     
     
     
@@ -221,7 +225,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane_ClientStatus;
     private javax.swing.JScrollPane jScrollPane_Status;
     private static javax.swing.JTextArea jTextAreaStatus;
-    private javax.swing.JTextArea jTextArea_ClientStatus;
+    private static javax.swing.JTextArea jTextArea_ClientStatus;
     private javax.swing.JTextField jTextField_HostAddress;
     // End of variables declaration//GEN-END:variables
 }

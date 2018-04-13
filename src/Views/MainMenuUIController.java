@@ -15,6 +15,10 @@ public class MainMenuUIController {
    public static void setTextStatus(String status){
        MainMenu.appendToStatusText(status+"\n");
    }
+   
+   public static void showClientStatus(String status){
+   MainMenu.showClientStatus(status);
+   }
     
     
 }
