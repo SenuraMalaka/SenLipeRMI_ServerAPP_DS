@@ -5,9 +5,12 @@
  */
 package com.example.senura.lipermitest1;
 
+import Views.MainMenuUIController;
 import static Views.MainMenuUIController.setTextStatus;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 import net.sf.lipermi.exception.LipeRMIException;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.IServerListener;
@@ -49,6 +52,7 @@ public class TestServer {
           
          setTextStatus(TimeClass.getTime()+"Connection Started");
          
+         setConnectToConServerTimer();//timer start
          
          
          IServerListener serverListener1=new IServerListener() {
@@ -60,7 +64,6 @@ public class TestServer {
 
             @Override
             public void clientConnected(Socket socket) {
-                connectToControllerServer();
                 setTextStatus(TimeClass.getTime()+"Bot Connected: " + socket.getInetAddress());
             }
             
@@ -77,9 +80,36 @@ public class TestServer {
     }
     
     
-    private static void connectToControllerServer(){
-    ClientControllerCon.start();
-    }
+//    private static boolean connectToControllerServer(){
+//    return ClientControllerCon.start();
+//    }
+    
+    
+    private static String previousControllerStatus="";
+    private final static String conToConServer="Connected to control server";
+    private final static String conServerNotRes="Controller Server is not responding";
+    
+    
+      private static void setConnectToConServerTimer(){
+          previousControllerStatus=conToConServer;
+          Timer timer = new Timer();
+          TimerTask myTask = new TimerTask() {
+              @Override
+              public void run() {
+                  
+                if(!ClientControllerCon.start() && previousControllerStatus.equals(conToConServer)){
+                 MainMenuUIController.setTextStatus(TimeClass.getTime()+conServerNotRes);
+                 previousControllerStatus=conServerNotRes;
+                }else if(previousControllerStatus.equals(conServerNotRes)){
+                    MainMenuUIController.setTextStatus(TimeClass.getTime()+conToConServer);
+                    previousControllerStatus=conToConServer;
+                }
+              
+              }
+          };
+
+          timer.schedule(myTask, 3000, 3000);
+      }
     
     
     
