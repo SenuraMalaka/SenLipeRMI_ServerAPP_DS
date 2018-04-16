@@ -27,6 +27,7 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         buttonSendDDOS.setEnabled(false);
+        jButton_startDDOSAttck.setEnabled(false);
  
     }
 
@@ -46,6 +47,8 @@ public class MainMenu extends javax.swing.JFrame {
         jTextAreaStatus = new javax.swing.JTextArea();
         jScrollPane_ClientStatus = new javax.swing.JScrollPane();
         jTextArea_ClientStatus = new javax.swing.JTextArea();
+        jButton_startDDOSAttck = new javax.swing.JButton();
+        jTextField_numOfAttcks = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(612, 672));
@@ -54,14 +57,14 @@ public class MainMenu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(612, 672));
         getContentPane().setLayout(null);
 
-        buttonSendDDOS.setText("Send DDOS");
+        buttonSendDDOS.setText("Set DDOS URL");
         buttonSendDDOS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSendDDOSActionPerformed(evt);
             }
         });
         getContentPane().add(buttonSendDDOS);
-        buttonSendDDOS.setBounds(270, 30, 270, 70);
+        buttonSendDDOS.setBounds(430, 130, 160, 40);
 
         buttonStartConnection.setText("Start Connection");
         buttonStartConnection.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +73,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonStartConnection);
-        buttonStartConnection.setBounds(50, 30, 210, 70);
+        buttonStartConnection.setBounds(20, 30, 570, 70);
 
         jTextField_HostAddress.setText("https://httpbin.org/user-agent");
         jTextField_HostAddress.setToolTipText("Type the Host Url here");
@@ -80,7 +83,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField_HostAddress);
-        jTextField_HostAddress.setBounds(50, 130, 480, 40);
+        jTextField_HostAddress.setBounds(30, 130, 390, 40);
 
         jTextAreaStatus.setColumns(20);
         jTextAreaStatus.setRows(5);
@@ -94,7 +97,20 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane_ClientStatus.setViewportView(jTextArea_ClientStatus);
 
         getContentPane().add(jScrollPane_ClientStatus);
-        jScrollPane_ClientStatus.setBounds(20, 410, 570, 210);
+        jScrollPane_ClientStatus.setBounds(20, 400, 570, 210);
+
+        jButton_startDDOSAttck.setText("Start DDOS Attack");
+        jButton_startDDOSAttck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_startDDOSAttckActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_startDDOSAttck);
+        jButton_startDDOSAttck.setBounds(190, 630, 400, 40);
+
+        jTextField_numOfAttcks.setToolTipText("Number of Attacks");
+        getContentPane().add(jTextField_numOfAttcks);
+        jTextField_numOfAttcks.setBounds(20, 630, 160, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,7 +124,11 @@ public class MainMenu extends javax.swing.JFrame {
      String URLtext=jTextField_HostAddress.getText();
      
      if(URLValidate.isUrlValid(URLtext))
-     ServerConnection.setDDOSURL(URLtext);//("https://httpbin.org/ip");
+     {
+         ServerConnection.setDDOSURL(URLtext);//("https://httpbin.org/ip");
+         buttonSendDDOS.setEnabled(false);//hide button
+         jButton_startDDOSAttck.setEnabled(true);
+     }
      else{
          msgbox(URLtext+" is not a valid Host Address\n Make sure protocols are there (https/http etc.)");
      }
@@ -134,6 +154,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void jTextField_HostAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_HostAddressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_HostAddressActionPerformed
+
+    private void jButton_startDDOSAttckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_startDDOSAttckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_startDDOSAttckActionPerformed
 
     
     
@@ -222,10 +246,12 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
+    private javax.swing.JButton jButton_startDDOSAttck;
     private javax.swing.JScrollPane jScrollPane_ClientStatus;
     private javax.swing.JScrollPane jScrollPane_Status;
     private static javax.swing.JTextArea jTextAreaStatus;
     private static javax.swing.JTextArea jTextArea_ClientStatus;
     private javax.swing.JTextField jTextField_HostAddress;
+    private javax.swing.JTextField jTextField_numOfAttcks;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,6 @@
  */
 package com.example.senura.lipermitest1;
 
-import java.util.ArrayList;
 
 /**
  *
@@ -15,6 +14,6 @@ public interface TestServiceController {
     public String getResponse(String data);
     public void setDDOSCount(int count, String ipAddress, String hostName);
     public String getClientInfo();
-    
+    public int getNumofDDOSToBeExcecuted(String ipAddress);
 
 }
