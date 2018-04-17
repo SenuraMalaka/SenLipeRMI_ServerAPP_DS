@@ -52,8 +52,14 @@ public class MainMenu extends javax.swing.JFrame {
         jTextField_numOfAttcks = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea_RewardsStatusText = new javax.swing.JTextArea();
+        jLabel_ConnectedBots = new javax.swing.JLabel();
+        jLabel_DDOSURL1 = new javax.swing.JLabel();
+        jLabel_ServerStatus1 = new javax.swing.JLabel();
+        jLabel_ConnectedBots1 = new javax.swing.JLabel();
+        jLabel_ConnectedBots2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(612, 672));
         setPreferredSize(new java.awt.Dimension(600, 700));
         setResizable(false);
@@ -102,7 +108,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane_ClientStatus.setViewportView(jTextArea_ClientStatus);
 
         getContentPane().add(jScrollPane_ClientStatus);
-        jScrollPane_ClientStatus.setBounds(20, 360, 570, 120);
+        jScrollPane_ClientStatus.setBounds(20, 360, 570, 110);
 
         jButton_startDDOSAttck.setText("Start DDOS Attack");
         jButton_startDDOSAttck.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +117,11 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton_startDDOSAttck);
-        jButton_startDDOSAttck.setBounds(190, 630, 400, 40);
+        jButton_startDDOSAttck.setBounds(330, 480, 260, 40);
 
         jTextField_numOfAttcks.setToolTipText("Number of Attacks");
         getContentPane().add(jTextField_numOfAttcks);
-        jTextField_numOfAttcks.setBounds(20, 630, 160, 40);
+        jTextField_numOfAttcks.setBounds(150, 480, 160, 40);
 
         jTextArea_RewardsStatusText.setEditable(false);
         jTextArea_RewardsStatusText.setColumns(20);
@@ -128,7 +134,27 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea_RewardsStatusText);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 500, 570, 100);
+        jScrollPane1.setBounds(20, 570, 570, 100);
+
+        jLabel_ConnectedBots.setText("Number of GETS");
+        getContentPane().add(jLabel_ConnectedBots);
+        jLabel_ConnectedBots.setBounds(30, 490, 120, 20);
+
+        jLabel_DDOSURL1.setText("DDOS >>> URL");
+        getContentPane().add(jLabel_DDOSURL1);
+        jLabel_DDOSURL1.setBounds(40, 110, 110, 20);
+
+        jLabel_ServerStatus1.setText("Server Status");
+        getContentPane().add(jLabel_ServerStatus1);
+        jLabel_ServerStatus1.setBounds(260, 180, 100, 20);
+
+        jLabel_ConnectedBots1.setText("Bots - Performance >> Number of GETS/s");
+        getContentPane().add(jLabel_ConnectedBots1);
+        jLabel_ConnectedBots1.setBounds(170, 340, 280, 20);
+
+        jLabel_ConnectedBots2.setText("Bots - Rewards");
+        getContentPane().add(jLabel_ConnectedBots2);
+        jLabel_ConnectedBots2.setBounds(250, 550, 100, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,6 +306,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
     private javax.swing.JButton jButton_startDDOSAttck;
+    private javax.swing.JLabel jLabel_ConnectedBots;
+    private javax.swing.JLabel jLabel_ConnectedBots1;
+    private javax.swing.JLabel jLabel_ConnectedBots2;
+    private javax.swing.JLabel jLabel_DDOSURL1;
+    private javax.swing.JLabel jLabel_ServerStatus1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_ClientStatus;
     private javax.swing.JScrollPane jScrollPane_Status;
