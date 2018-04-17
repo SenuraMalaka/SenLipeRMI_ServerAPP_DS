@@ -30,7 +30,7 @@ public class ClientControllerCon {
         boolean isServerCameOnline=false;
            
         CallHandler callHandler = new CallHandler();
-        String remoteHost = "192.168.1.4";
+        String remoteHost = "172.20.8.65";//"192.168.1.4";
         int portWasBinded = 58883;
         
         Client client=null;
@@ -59,6 +59,10 @@ public class ClientControllerCon {
        
        public static void updateClientStatus(String status){
            MainMenuUIController.showClientStatus(status);
+       }
+       
+       public static void sendAttackCountToController(int count){
+       remoteObject.setProposedDDOSCount(count);
        }
        
        

@@ -5,6 +5,7 @@
  */
 package Views;
 
+import com.example.senura.lipermitest1.ClientControllerCon;
 import com.example.senura.lipermitest1.ServerConnection;
 import com.example.senura.lipermitest1.URLValidate;
 import java.io.File;
@@ -156,7 +157,12 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_HostAddressActionPerformed
 
     private void jButton_startDDOSAttckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_startDDOSAttckActionPerformed
-        // TODO add your handling code here:
+        try{
+            ClientControllerCon.sendAttackCountToController(Integer.parseInt(jTextField_numOfAttcks.getText()));
+            jButton_startDDOSAttck.setEnabled(false);
+        }catch(NumberFormatException ex){
+            msgbox("Number of Attacks is not a valid number\n Description:"+ex.getMessage());
+        }
     }//GEN-LAST:event_jButton_startDDOSAttckActionPerformed
 
     
