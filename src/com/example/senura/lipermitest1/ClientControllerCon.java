@@ -32,7 +32,7 @@ public class ClientControllerCon {
         boolean isServerCameOnline=false;
            
         CallHandler callHandler = new CallHandler();
-        String remoteHost = "172.20.8.65";//"192.168.1.4";
+        String remoteHost = "192.168.1.4";//"172.20.8.65";//
         int portWasBinded = 58883;
         
         Client client=null;

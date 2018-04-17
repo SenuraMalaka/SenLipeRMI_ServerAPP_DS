@@ -8,8 +8,10 @@ package Views;
 import com.example.senura.lipermitest1.ClientControllerCon;
 import com.example.senura.lipermitest1.ServerConnection;
 import com.example.senura.lipermitest1.URLValidate;
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -42,6 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonSendDDOS = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         buttonStartConnection = new javax.swing.JButton();
         jTextField_HostAddress = new javax.swing.JTextField();
         jScrollPane_Status = new javax.swing.JScrollPane();
@@ -50,6 +53,7 @@ public class MainMenu extends javax.swing.JFrame {
         jTextArea_ClientStatus = new javax.swing.JTextArea();
         jButton_startDDOSAttck = new javax.swing.JButton();
         jTextField_numOfAttcks = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea_RewardsStatusText = new javax.swing.JTextArea();
         jLabel_ConnectedBots = new javax.swing.JLabel();
@@ -57,11 +61,14 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel_ServerStatus1 = new javax.swing.JLabel();
         jLabel_ConnectedBots1 = new javax.swing.JLabel();
         jLabel_ConnectedBots2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(612, 672));
-        setPreferredSize(new java.awt.Dimension(600, 700));
+        setMinimumSize(new java.awt.Dimension(612, 682));
+        setPreferredSize(new java.awt.Dimension(600, 720));
         setResizable(false);
         setSize(new java.awt.Dimension(612, 672));
         getContentPane().setLayout(null);
@@ -73,7 +80,12 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonSendDDOS);
-        buttonSendDDOS.setBounds(430, 130, 160, 40);
+        buttonSendDDOS.setBounds(480, 150, 110, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/images/robot_1_small.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(460, 210, 130, 180);
 
         buttonStartConnection.setText("Start Connection");
         buttonStartConnection.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +94,9 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(buttonStartConnection);
-        buttonStartConnection.setBounds(20, 30, 570, 70);
+        buttonStartConnection.setBounds(20, 80, 570, 60);
 
+        jTextField_HostAddress.setForeground(new java.awt.Color(0, 51, 102));
         jTextField_HostAddress.setText("https://httpbin.org/user-agent");
         jTextField_HostAddress.setToolTipText("Type the Host Url here");
         jTextField_HostAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -92,23 +105,25 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField_HostAddress);
-        jTextField_HostAddress.setBounds(30, 130, 390, 40);
+        jTextField_HostAddress.setBounds(140, 150, 340, 40);
 
         jTextAreaStatus.setEditable(false);
         jTextAreaStatus.setColumns(20);
+        jTextAreaStatus.setForeground(new java.awt.Color(0, 51, 102));
         jTextAreaStatus.setRows(5);
         jScrollPane_Status.setViewportView(jTextAreaStatus);
 
         getContentPane().add(jScrollPane_Status);
-        jScrollPane_Status.setBounds(20, 200, 570, 130);
+        jScrollPane_Status.setBounds(20, 220, 430, 130);
 
         jTextArea_ClientStatus.setEditable(false);
         jTextArea_ClientStatus.setColumns(20);
+        jTextArea_ClientStatus.setForeground(new java.awt.Color(0, 51, 102));
         jTextArea_ClientStatus.setRows(5);
         jScrollPane_ClientStatus.setViewportView(jTextArea_ClientStatus);
 
         getContentPane().add(jScrollPane_ClientStatus);
-        jScrollPane_ClientStatus.setBounds(20, 360, 570, 110);
+        jScrollPane_ClientStatus.setBounds(20, 380, 570, 100);
 
         jButton_startDDOSAttck.setText("Start DDOS Attack");
         jButton_startDDOSAttck.addActionListener(new java.awt.event.ActionListener() {
@@ -117,14 +132,21 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton_startDDOSAttck);
-        jButton_startDDOSAttck.setBounds(330, 480, 260, 40);
+        jButton_startDDOSAttck.setBounds(330, 490, 260, 40);
 
         jTextField_numOfAttcks.setToolTipText("Number of Attacks");
         getContentPane().add(jTextField_numOfAttcks);
-        jTextField_numOfAttcks.setBounds(150, 480, 160, 40);
+        jTextField_numOfAttcks.setBounds(150, 490, 160, 40);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/images/robot2_small.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 550, 90, 120);
 
         jTextArea_RewardsStatusText.setEditable(false);
         jTextArea_RewardsStatusText.setColumns(20);
+        jTextArea_RewardsStatusText.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jTextArea_RewardsStatusText.setForeground(new java.awt.Color(102, 51, 0));
         jTextArea_RewardsStatusText.setRows(5);
         jTextArea_RewardsStatusText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -134,27 +156,48 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea_RewardsStatusText);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 570, 570, 100);
+        jScrollPane1.setBounds(100, 570, 480, 100);
 
         jLabel_ConnectedBots.setText("Number of GETS");
         getContentPane().add(jLabel_ConnectedBots);
-        jLabel_ConnectedBots.setBounds(30, 490, 120, 20);
+        jLabel_ConnectedBots.setBounds(30, 500, 120, 20);
 
         jLabel_DDOSURL1.setText("DDOS >>> URL");
         getContentPane().add(jLabel_DDOSURL1);
-        jLabel_DDOSURL1.setBounds(40, 110, 110, 20);
+        jLabel_DDOSURL1.setBounds(30, 160, 110, 20);
 
         jLabel_ServerStatus1.setText("Server Status");
         getContentPane().add(jLabel_ServerStatus1);
-        jLabel_ServerStatus1.setBounds(260, 180, 100, 20);
+        jLabel_ServerStatus1.setBounds(30, 200, 100, 20);
 
         jLabel_ConnectedBots1.setText("Bots - Performance >> Number of GETS/s");
         getContentPane().add(jLabel_ConnectedBots1);
-        jLabel_ConnectedBots1.setBounds(170, 340, 280, 20);
+        jLabel_ConnectedBots1.setBounds(20, 360, 280, 20);
 
+        jLabel_ConnectedBots2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel_ConnectedBots2.setText("Bots - Rewards");
         getContentPane().add(jLabel_ConnectedBots2);
-        jLabel_ConnectedBots2.setBounds(250, 550, 100, 20);
+        jLabel_ConnectedBots2.setBounds(100, 550, 100, 20);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/images/AtckNowlogoSen.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, -20, 220, 120);
+
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("© Senura Dissanayake");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+        });
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 680, 150, 16);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/images/whiteCol.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 630, 700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -213,6 +256,19 @@ public class MainMenu extends javax.swing.JFrame {
     private void jTextArea_RewardsStatusTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea_RewardsStatusTextMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextArea_RewardsStatusTextMouseClicked
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://github.com/SenuraMalaka"));
+            } catch (URISyntaxException | IOException ex) {
+                //
+            }
+}
+        
+        
+    }//GEN-LAST:event_jLabel5MouseEntered
 
     
     
@@ -306,6 +362,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
     private javax.swing.JButton jButton_startDDOSAttck;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_ConnectedBots;
     private javax.swing.JLabel jLabel_ConnectedBots1;
     private javax.swing.JLabel jLabel_ConnectedBots2;

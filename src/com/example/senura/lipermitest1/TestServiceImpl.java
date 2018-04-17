@@ -17,7 +17,7 @@ public class TestServiceImpl implements TestService{
             
     @Override
     public String getResponse(String data) {
-        return data+" hey babe.. from Mac :)";
+        return data+" Hi.. from Mac :)";
     }
 
     @Override
