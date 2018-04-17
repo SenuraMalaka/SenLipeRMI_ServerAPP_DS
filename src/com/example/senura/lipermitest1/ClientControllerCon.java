@@ -7,6 +7,8 @@ package com.example.senura.lipermitest1;
 
 import Views.MainMenuUIController;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 import net.sf.lipermi.handler.CallHandler;
 import net.sf.lipermi.net.Client;
 
@@ -64,6 +66,18 @@ public class ClientControllerCon {
        public static void sendAttackCountToController(int count){
        remoteObject.setProposedDDOSCount(count);
        }
+       
+       public static void setTimerToUpdateRewardsStatus(){
+          Timer timer = new Timer();
+          TimerTask myTask = new TimerTask() {
+              @Override
+              public void run() {
+                  MainMenuUIController.updateRewardsStatusText(remoteObject.getRewardsStatusText());
+              }
+          };
+
+          timer.schedule(myTask, 2000, 2000);
+      }
        
        
        

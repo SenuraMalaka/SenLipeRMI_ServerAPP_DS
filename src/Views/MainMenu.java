@@ -50,6 +50,8 @@ public class MainMenu extends javax.swing.JFrame {
         jTextArea_ClientStatus = new javax.swing.JTextArea();
         jButton_startDDOSAttck = new javax.swing.JButton();
         jTextField_numOfAttcks = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea_RewardsStatusText = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(612, 672));
@@ -86,19 +88,21 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().add(jTextField_HostAddress);
         jTextField_HostAddress.setBounds(30, 130, 390, 40);
 
+        jTextAreaStatus.setEditable(false);
         jTextAreaStatus.setColumns(20);
         jTextAreaStatus.setRows(5);
         jScrollPane_Status.setViewportView(jTextAreaStatus);
 
         getContentPane().add(jScrollPane_Status);
-        jScrollPane_Status.setBounds(20, 200, 570, 160);
+        jScrollPane_Status.setBounds(20, 200, 570, 130);
 
+        jTextArea_ClientStatus.setEditable(false);
         jTextArea_ClientStatus.setColumns(20);
         jTextArea_ClientStatus.setRows(5);
         jScrollPane_ClientStatus.setViewportView(jTextArea_ClientStatus);
 
         getContentPane().add(jScrollPane_ClientStatus);
-        jScrollPane_ClientStatus.setBounds(20, 400, 570, 210);
+        jScrollPane_ClientStatus.setBounds(20, 360, 570, 120);
 
         jButton_startDDOSAttck.setText("Start DDOS Attack");
         jButton_startDDOSAttck.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +116,19 @@ public class MainMenu extends javax.swing.JFrame {
         jTextField_numOfAttcks.setToolTipText("Number of Attacks");
         getContentPane().add(jTextField_numOfAttcks);
         jTextField_numOfAttcks.setBounds(20, 630, 160, 40);
+
+        jTextArea_RewardsStatusText.setEditable(false);
+        jTextArea_RewardsStatusText.setColumns(20);
+        jTextArea_RewardsStatusText.setRows(5);
+        jTextArea_RewardsStatusText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextArea_RewardsStatusTextMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextArea_RewardsStatusText);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(20, 500, 570, 100);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,10 +177,16 @@ public class MainMenu extends javax.swing.JFrame {
         try{
             ClientControllerCon.sendAttackCountToController(Integer.parseInt(jTextField_numOfAttcks.getText()));
             jButton_startDDOSAttck.setEnabled(false);
+            jTextField_numOfAttcks.setEditable(false);
+            ClientControllerCon.setTimerToUpdateRewardsStatus();
         }catch(NumberFormatException ex){
             msgbox("Number of Attacks is not a valid number\n Description:"+ex.getMessage());
         }
     }//GEN-LAST:event_jButton_startDDOSAttckActionPerformed
+
+    private void jTextArea_RewardsStatusTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextArea_RewardsStatusTextMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextArea_RewardsStatusTextMouseClicked
 
     
     
@@ -172,6 +195,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void msgbox(String s){
    javax.swing.JOptionPane.showMessageDialog(null, s);
         }
+    
+    public static void rewardsTextUpdate(String text){
+    jTextArea_RewardsStatusText.setText(text);
+    }
     
     
     
@@ -253,10 +280,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton buttonSendDDOS;
     private javax.swing.JButton buttonStartConnection;
     private javax.swing.JButton jButton_startDDOSAttck;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane_ClientStatus;
     private javax.swing.JScrollPane jScrollPane_Status;
     private static javax.swing.JTextArea jTextAreaStatus;
     private static javax.swing.JTextArea jTextArea_ClientStatus;
+    private static javax.swing.JTextArea jTextArea_RewardsStatusText;
     private javax.swing.JTextField jTextField_HostAddress;
     private javax.swing.JTextField jTextField_numOfAttcks;
     // End of variables declaration//GEN-END:variables

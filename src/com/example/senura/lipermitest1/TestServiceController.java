@@ -16,5 +16,7 @@ public interface TestServiceController {
     public String getClientInfo();
     public int getNumofDDOSToBeExcecuted(String ipAddress);
     public void setProposedDDOSCount(int count);
+    public void sendGetDone(int count, String ipAddress, String hostName);
+    public String getRewardsStatusText();
 
 }

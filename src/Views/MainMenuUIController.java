@@ -19,6 +19,10 @@ public class MainMenuUIController {
    public static void showClientStatus(String status){
    MainMenu.showClientStatus(status);
    }
+   
+   public static void updateRewardsStatusText(String text){
+   MainMenu.rewardsTextUpdate(text);
+   }
     
     
 }
